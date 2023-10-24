@@ -1,0 +1,111 @@
+/* Center the form container both horizontally and vertically */
+/* .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 10vh; 
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  } */
+  .form-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  
+  /* Style the form fields and other elements as mentioned before */
+  .form-group {
+    margin: 5px 0;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* input[type="text"] {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  label {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #333;
+  } */
+
+  label {
+    display: block;
+    width: 6em;
+    margin: .5em 0;
+    color: #607D8B;
+    font-weight: bold;
+  }
+  
+  /* input {
+    height: 2em;
+    font-size: 1em;
+    padding-left: .4em;
+  } */
+  .custom-input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .custom-textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  .custom-calendar {
+    width: 50%;
+    height: 100px;
+    padding: 8px;
+    margin: 100px 0;
+    border-radius: 1px;
+    box-sizing:inherit;
+    resize: vertical;
+  }
+  
+  /* button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+  } */
+
+  .custom-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
+  .custom-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  /* Add hover and focus effects as mentioned before */
+  
