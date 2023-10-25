@@ -1,26 +1,15 @@
 <button type="submit" class="custom-button" (click)="onAddClick()"> Add New Book </button>
 <div class="form-group" style="float:right;">
   <span style="margin-right: 10px;" (click)="searchBooks()">
-  <i class="pi pi-search" style="cursor: pointer;"></i>
-</span>
-  <!-- <label for="title">Search Books</label> -->
-  <input type="text" [(ngModel)]="searchText" (keydown)="searchBooks()"
-  id="title" placeholder="Search Books" pInputText class="custom-input"/>
-  </div>
-<h1 >Book List</h1>
+    <i class="pi pi-search" style="cursor: pointer;"></i>
+  </span>
+  <input type="text" [(ngModel)]="searchText" (keydown)="searchBooks()" id="title" placeholder="Search Books" pInputText
+    class="custom-input" />
+</div>
+<h1>Book List</h1>
 <div class="ui-table-wrapper">
   <p-table [value]="books" styleClass="p-datatable-sm p-datatable-striped" [tableStyle]="{ 'min-width': '50rem' }"
-    [paginator]="true" [rows]="5" [scrollable]="true" scrollHeight="330px" [virtualRowHeight]="30">
-    <ng-template pTemplate="colgroup" let-columns>
-      <colgroup>
-        <col class="W-150">
-        <col class="W-150">
-        <col class="W-150">
-        <col class="W-150">
-        <col class="W-90">
-        <col class="W-90">
-      </colgroup>
-    </ng-template>
+    [paginator]="true" [rows]="5" [scrollable]="true" scrollHeight="330px">
     <ng-template pTemplate="header">
       <tr>
         <th>Title</th>
@@ -51,8 +40,4 @@
       </tr>
     </ng-template>
   </p-table>
-</div>
-<div class="dialogCard">
-
-
 </div>

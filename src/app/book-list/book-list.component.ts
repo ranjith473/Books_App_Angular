@@ -3,7 +3,7 @@ import { BooksService } from 'src/services/books.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import Swal from 'sweetalert2';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -12,22 +12,22 @@ import { Router,ActivatedRoute } from '@angular/router';
 })
 export class BookListComponent implements OnInit {
   books: any = [];
-  copyBooks:any;
-  searchText:any
-  showDialog:boolean = false;
-  bookForm!: FormGroup ;
+  copyBooks: any;
+  searchText: any
+  showDialog: boolean = false;
+  bookForm!: FormGroup;
   constructor(private booksService: BooksService,
-     private messageService: MessageService,
-     private formBuilder: FormBuilder,
-     private router: Router,
-     private activatedRoute: ActivatedRoute,
-     ) { }
+    private messageService: MessageService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
-   this.searchText=''
+    this.searchText = ''
     this.getAllBooks();
   }
-  onAddClick(){
+  onAddClick() {
     this.router.navigate(['/book'])
   }
   getAllBooks() {
@@ -48,30 +48,23 @@ export class BookListComponent implements OnInit {
     });
   }
 
-  onEditClick(isbn:any,id:any) {
-    // this.showDialog = true;
-    // this.initializeBookForm();
-    this.router.navigate(['/editBook'],{queryParams:{isbn}})
+  onEditClick(isbn: any, id: any) {
+    this.router.navigate(['/editBook'], { queryParams: { isbn } })
 
   }
-  editBook(data:any){
-    let req={
-      "title":data.title,
-      "author":data.author,
-      "description":data.author,
-      "publishedYear":data.publishedYear.getFullYear(),
-      "ISBN":data.ISBN,
-  }
+  editBook(data: any) {
+    let req = {
+      "title": data.title,
+      "author": data.author,
+      "description": data.author,
+      "publishedYear": data.publishedYear.getFullYear(),
+      "ISBN": data.ISBN,
+    }
     this.booksService.updateBook(req).subscribe(result => {
-      // this.books=result.details
-      console.log("RESULT",result)
-     })
-    console.log('editBook',data)
-    console.log('REQ',req)
+    })
   }
 
   deleteBook(BookData: any) {
-    console.log("BookData",BookData);
     this.messageService.clear();
     let msg = `Are you sure you want to delete?`;
     Swal.fire({
@@ -82,56 +75,49 @@ export class BookListComponent implements OnInit {
       cancelButtonText: 'No',
     }).then((result) => {
       if (result.value) {
-        console.log("result",result.value);
-          console.log("IDDD",BookData._id)
-          this.booksService
-            .deleteBook(BookData._id)
-            .subscribe({
-              next: (res: any) => {
-                console.log("RES", res)
-                if (res.status == 200) {
-                  let msg = res.message;
-                  this.messageService.add({
-                    severity: 'success',
-                    summary: 'Success',
-                    detail: msg,
-                    life: 2000,
-                  });
-                }
-              },
-              complete: () => {
-                // this.showLoading = false;
-              },
-            });
+        this.booksService
+          .deleteBook(BookData._id)
+          .subscribe({
+            next: (res: any) => {
+              if (res.status == 200) {
+                let msg = res.message;
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Success',
+                  detail: msg,
+                  life: 2000,
+                });
+              }
+            },
+          });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         return;
       }
     })
   }
-  searchBooks(){
-    this.books = this.copyBooks.filter((data:any) => 
-    // console.log(data)
-    (data['title'] != null &&
-          data['title']
-            .toString()
-            .toLowerCase()
-            .indexOf(this.searchText.trim().toLowerCase()) !== -1) ||
-        (data['description'] != null &&
+  searchBooks() {
+    this.books = this.copyBooks.filter((data: any) =>
+      (data['title'] != null &&
+        data['title']
+          .toString()
+          .toLowerCase()
+          .indexOf(this.searchText.trim().toLowerCase()) !== -1) ||
+      (data['description'] != null &&
         data['description']
-        .toString()
-        .toLowerCase()
-        .indexOf(this.searchText.trim().toLowerCase()) !== -1) ||
-        (data['author'] != null &&
+          .toString()
+          .toLowerCase()
+          .indexOf(this.searchText.trim().toLowerCase()) !== -1) ||
+      (data['author'] != null &&
         data['author']
-        .toString()
-        .toLowerCase()
-        .indexOf(this.searchText.trim().toLowerCase()) !== -1) || 
-        (data['ISBN'] != null &&
+          .toString()
+          .toLowerCase()
+          .indexOf(this.searchText.trim().toLowerCase()) !== -1) ||
+      (data['ISBN'] != null &&
         data['ISBN']
-        .toString()
-        .toLowerCase()
-        .indexOf(this.searchText.trim().toLowerCase()) !== -1)
-      )
-  
+          .toString()
+          .toLowerCase()
+          .indexOf(this.searchText.trim().toLowerCase()) !== -1)
+    )
+
   }
 }

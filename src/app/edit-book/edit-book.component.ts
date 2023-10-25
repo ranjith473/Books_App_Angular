@@ -12,14 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [MessageService]
 })
 export class EditBookComponent implements OnInit {
-  bookForm!: FormGroup ;
-  bookId:any
+  bookForm!: FormGroup;
+  bookId: any
   constructor(private formBuilder: FormBuilder,
-     private booksService: BooksService,
-     private messageService: MessageService,
-     private router: Router,
-     private activatedRoute: ActivatedRoute,
-     ) { }
+    private booksService: BooksService,
+    private messageService: MessageService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
     this.bookForm = this.formBuilder.group({
@@ -29,50 +29,38 @@ export class EditBookComponent implements OnInit {
       publishedYear: [null],
       ISBN: [''],
     });
-    // this.bookForm.get('ISBN')?.disable();
-    
+
     this.activatedRoute.queryParams.subscribe(params => {
-      this.bookId=params
+      this.bookId = params
     })
-    console.log("ID",this.bookId)
     this.getBookDetails()
   }
   get form() {
     return this.bookForm.controls;
-}
-  getBookDetails(){
+  }
+  getBookDetails() {
     this.booksService.getBookById(this.bookId).subscribe(result => {
-      console.log("details",result.details)
 
       this.bookForm.patchValue({
-      title: result.details.title,
-      author: result.details.author,
-      description: result.details.description,
-      publishedYear: new Date(result.details.publishedYear),
-      ISBN: result.details.ISBN,
+        title: result.details.title,
+        author: result.details.author,
+        description: result.details.description,
+        publishedYear: new Date(result.details.publishedYear),
+        ISBN: result.details.ISBN,
       })
       this.form['ISBN'].disable();
-     })
+    })
   }
-  editBook(data:any) {
-  //   let req={
-  //     "title":data.title,
-  //     "author":data.author,
-  //     "description":data.description,
-  //     "publishedYear":new Date(data.publishedYear),
-  //     "ISBN":data.ISBN,
-  // }
-  let req=this.bookForm.getRawValue()
-  console.log(this.bookForm.getRawValue())
+  editBook(data: any) {
+    let req = this.bookForm.getRawValue()
+    console.log(this.bookForm.getRawValue())
     this.booksService.updateBook(req).subscribe(result => {
-      // this.books=result.details
-      console.log("RESULT",result)
       this.router.navigate([''])
-      
-     })
+
+    })
   }
 
-  onClickClose(){
+  onClickClose() {
     this.router.navigate([''])
   }
 }

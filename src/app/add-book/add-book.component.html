@@ -1,68 +1,64 @@
-
-
-  <div class="form-container">
+<div class="form-container">
   <form [formGroup]="bookForm" (ngSubmit)="addBook(bookForm.value)" class="book-form">
     <h2 class="form-heading">BOOK CREATION</h2>
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" id="title" formControlName="title" pInputText class="custom-input"/>
-      <ng-container
-      *ngIf="(form['title'].invalid) &&(form['title'].dirty || form['title'].touched)  ">
-      <small *ngIf=" form['title'].errors?.['required']" class="p-invalid">
+      <input type="text" id="title" formControlName="title" pInputText class="custom-input" />
+      <ng-container *ngIf="(form['title'].invalid) &&(form['title'].dirty || form['title'].touched)  ">
+        <small *ngIf=" form['title'].errors?.['required']" class="p-invalid">
           <span class="validation_css" style="color: red; font-weight: light;font-size: medium;">
-              Title is required
+            Title is required
           </span>
-      </small>
-  </ng-container>
+        </small>
+      </ng-container>
     </div>
     <div class="form-group">
       <label for="author">Author</label>
-      <input type="text" id="author" formControlName="author" pInputText class="custom-input"/>
-      <ng-container
-      *ngIf="(form['author'].invalid) &&(form['author'].dirty || form['author'].touched)  ">
-      <small *ngIf=" form['author'].errors?.['required']" class="p-invalid">
+      <input type="text" id="author" formControlName="author" pInputText class="custom-input" />
+      <ng-container *ngIf="(form['author'].invalid) &&(form['author'].dirty || form['author'].touched)  ">
+        <small *ngIf=" form['author'].errors?.['required']" class="p-invalid">
           <span class="validation_css" style="color: red; font-weight: light;font-size: medium;">
             Author is required
           </span>
-      </small>
-  </ng-container>
+        </small>
+      </ng-container>
     </div>
     <div class="form-group">
       <label for="description">Description</label>
       <textarea id="description" formControlName="description" class="custom-textarea"></textarea>
       <ng-container
-      *ngIf="(form['description'].invalid) &&(form['description'].dirty || form['description'].touched)  ">
-      <small *ngIf=" form['description'].errors?.['required']" class="p-invalid">
+        *ngIf="(form['description'].invalid) &&(form['description'].dirty || form['description'].touched)  ">
+        <small *ngIf=" form['description'].errors?.['required']" class="p-invalid">
           <span class="validation_css" style="color: red; font-weight: light;font-size: medium;">
-              Description is required
+            Description is required
           </span>
-      </small>
-  </ng-container>
+        </small>
+      </ng-container>
     </div>
     <div class="p-col-12 p-pt-0 cal">
       <label for="publicationYear">Publication Year</label>
-      <p-calendar [showIcon]="true" formControlName="publishedYear" view="year" dateFormat="yy" inputId="yearpicker" class="custom-calendar" appendTo="body"></p-calendar>
+      <p-calendar [showIcon]="true" formControlName="publishedYear" view="year" dateFormat="yy" inputId="yearpicker"
+        class="custom-calendar" appendTo="body"></p-calendar>
       <ng-container
-      *ngIf="(form['publishedYear'].invalid) &&(form['publishedYear'].dirty || form['publishedYear'].touched)  ">
-      <small *ngIf=" form['publishedYear'].errors?.['required']" class="p-invalid">
+        *ngIf="(form['publishedYear'].invalid) &&(form['publishedYear'].dirty || form['publishedYear'].touched)  ">
+        <small *ngIf=" form['publishedYear'].errors?.['required']" class="p-invalid">
           <span class="validation_css" style="color: red; font-weight: light;font-size: medium;">
-              PublishedYear is required
+            PublishedYear is required
           </span>
-      </small>
-  </ng-container>
+        </small>
+      </ng-container>
     </div>
     <div class="form-group">
       <label for="isbn">ISBN</label>
-      <input type="text" id="ISBN" formControlName="ISBN" pInputText class="custom-input"/>
-      <ng-container
-      *ngIf="(form['ISBN'].invalid) &&(form['ISBN'].dirty || form['ISBN'].touched)  ">
-      <small *ngIf=" form['ISBN'].errors?.['required']" class="p-invalid">
+      <input type="text" id="ISBN" formControlName="ISBN" pInputText class="custom-input" />
+      <ng-container *ngIf="(form['ISBN'].invalid) &&(form['ISBN'].dirty || form['ISBN'].touched)  ">
+        <small *ngIf=" form['ISBN'].errors?.['required']" class="p-invalid">
           <span class="validation_css" style="color: red; font-weight: light;font-size: medium;">
-              ISBN is required
+            ISBN is required
           </span>
-      </small>
-  </ng-container>
+        </small>
+      </ng-container>
     </div>
     <button type="submit" [disabled]="bookForm.invalid" class="custom-button">Add Book</button>
   </form>
-  </div>
+</div>
