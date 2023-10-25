@@ -28,13 +28,7 @@ export class AddBookComponent implements OnInit {
     return this.bookForm.controls;
   }
   addBook(data: any) {
-    let req = {
-      "title": data.title,
-      "author": data.author,
-      "description": data.author,
-      "publishedYear": data.publishedYear.getFullYear(),
-      "ISBN": data.ISBN,
-    }
+    let req=this.bookForm.getRawValue()
     this.booksService.addBook(req).subscribe(result => {
       if (result.status == 200) {
         Swal.fire({
@@ -44,6 +38,7 @@ export class AddBookComponent implements OnInit {
           confirmButtonColor: '#3085d6',
           confirmButtonText: 'OK'
         })
+        this.bookForm.reset();
       }
     })
   }

@@ -28,12 +28,12 @@
         <td>
           <div style="margin-bottom: 10px; cursor:pointer;">
             <a class="pointerCursor" (click)="onEditClick(book.ISBN,book._id)">
-              <i class="pi pi-pencil" style="font-size: 1rem"></i>
+              <i class="pi pi-pencil" pTooltip="Edit" style="font-size: 1rem"></i>
             </a>
           </div>
           <div style=" cursor:pointer;">
             <a class="pointerCursor" (click)="deleteBook(book)">
-              <i class="pi pi-trash" style="font-size: 1.15rem"></i>
+              <i class="pi pi-trash" pTooltip="Delete" style="font-size: 1.15rem"></i>
             </a>
           </div>
         </td>

@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { StyleClassModule } from 'primeng/styleclass';
 import { ToastModule } from 'primeng/toast';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +45,8 @@ import { EditBookComponent } from './edit-book/edit-book.component';
     BrowserAnimationsModule,
     StyleClassModule,
     DialogModule,
-    ToastModule
+    ToastModule,
+    TooltipModule
   ],
   exports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { EditBookComponent } from './edit-book/edit-book.component';
     BrowserAnimationsModule,
     StyleClassModule,
     DialogModule,
-    ToastModule
+    ToastModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],

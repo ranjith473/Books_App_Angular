@@ -87,6 +87,7 @@ export class BookListComponent implements OnInit {
                   confirmButtonColor: '#3085d6',
                   confirmButtonText: 'OK'
                 })
+                this.getAllBooks();
               }
             },
           });
