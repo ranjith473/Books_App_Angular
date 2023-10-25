@@ -55,7 +55,18 @@ export class EditBookComponent implements OnInit {
     let req = this.bookForm.getRawValue()
     console.log(this.bookForm.getRawValue())
     this.booksService.updateBook(req).subscribe(result => {
-      this.router.navigate([''])
+      let msg = result.message;
+      if (result.status == 200) {
+        Swal.fire({
+          text: msg,
+          icon: 'success',
+          timer: 1500,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        })
+        this.getBookDetails()
+      }
+
 
     })
   }

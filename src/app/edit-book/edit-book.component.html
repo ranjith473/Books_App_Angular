@@ -1,15 +1,13 @@
-
-
 <div class="form-container">
-<form [formGroup]="bookForm" (ngSubmit)="editBook(bookForm.value)" class="book-form">
+  <form [formGroup]="bookForm" (ngSubmit)="editBook(bookForm.value)" class="book-form">
     <h2 class="form-heading">EDIT BOOK</h2>
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" id="title" formControlName="title" pInputText class="custom-input"/>
+      <input type="text" id="title" formControlName="title" pInputText class="custom-input" />
     </div>
     <div class="form-group">
       <label for="author">Author</label>
-      <input type="text" id="author" formControlName="author" pInputText class="custom-input"/>
+      <input type="text" id="author" formControlName="author" pInputText class="custom-input" />
     </div>
     <div class="form-group">
       <label for="description">Description</label>
@@ -17,12 +15,20 @@
     </div>
     <div class="form-group">
       <label for="publicationYear">Publication Year</label>
-      <p-calendar [showIcon]="true" formControlName="publishedYear" view="year" dateFormat="yy" inputId="yearpicker" class="custom-calendar" appendTo="body"></p-calendar>
+      <p-calendar [showIcon]="true" formControlName="publishedYear" view="year" dateFormat="yy" inputId="yearpicker"
+        class="custom-calendar" appendTo="body"></p-calendar>
     </div>
     <div class="form-group">
       <label for="isbn">ISBN</label>
-      <input type="text"  id="isbn" formControlName="ISBN" pInputText class="custom-input"/>
+      <input type="text" id="isbn" formControlName="ISBN" pInputText class="custom-input" />
     </div>
     <button type="submit" class="custom-button">Edit Book</button>
+    <div class="form-group" style="float:right;">
+      <button type="button" (click)="onClickClose()" class="back-button">Back</button>
+    </div>
   </form>
+</div>
+
+<div class="ag-btnHolder">
+  <p-toast position="top-center"></p-toast>
 </div>

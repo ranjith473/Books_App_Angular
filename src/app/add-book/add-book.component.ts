@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BooksService } from 'src/services/books.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-book',
@@ -9,7 +11,9 @@ import { BooksService } from 'src/services/books.service';
 })
 export class AddBookComponent implements OnInit {
   bookForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private booksService: BooksService) { }
+  constructor(private formBuilder: FormBuilder,
+    private booksService: BooksService,
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.bookForm = this.formBuilder.group({
@@ -32,7 +36,20 @@ export class AddBookComponent implements OnInit {
       "ISBN": data.ISBN,
     }
     this.booksService.addBook(req).subscribe(result => {
+      if (result.status == 200) {
+        Swal.fire({
+          text: 'Created Successfully',
+          icon: 'success',
+          timer: 2000,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        })
+      }
     })
+  }
+
+  onClickClose() {
+    this.router.navigate([''])
   }
 
 }

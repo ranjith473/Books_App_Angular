@@ -13,6 +13,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { StyleClassModule } from 'primeng/styleclass';
+import { ToastModule } from 'primeng/toast';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +43,8 @@ import { EditBookComponent } from './edit-book/edit-book.component';
     ButtonModule,
     BrowserAnimationsModule,
     StyleClassModule,
-    DialogModule
+    DialogModule,
+    ToastModule
   ],
   exports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { EditBookComponent } from './edit-book/edit-book.component';
     ButtonModule,
     BrowserAnimationsModule,
     StyleClassModule,
-    DialogModule
+    DialogModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent],

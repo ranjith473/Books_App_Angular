@@ -60,5 +60,8 @@
       </ng-container>
     </div>
     <button type="submit" [disabled]="bookForm.invalid" class="custom-button">Add Book</button>
+    <div class="form-group" style="float:right;">
+      <button type="button" (click)="onClickClose()" class="back-button">Back</button>
+    </div>
   </form>
 </div>

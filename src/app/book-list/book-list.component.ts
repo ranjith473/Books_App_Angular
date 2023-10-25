@@ -80,13 +80,13 @@ export class BookListComponent implements OnInit {
           .subscribe({
             next: (res: any) => {
               if (res.status == 200) {
-                let msg = res.message;
-                this.messageService.add({
-                  severity: 'success',
-                  summary: 'Success',
-                  detail: msg,
-                  life: 2000,
-                });
+                Swal.fire({
+                  text: 'Deleted Successfully',
+                  icon:'success',
+                  timer:1500,
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'OK'
+                })
               }
             },
           });
